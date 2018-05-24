@@ -1,12 +1,7 @@
-
-
 <div class="container">
   <h1>Contacts</h1>
-  <%= link_to 'Ajouter', new_contact_path, class: 'btn-green' %>
-  <br>
-  <% for i in 1 .. @number_of_pages %>
-    <%= link_to "#{i}", contacts_path(page: i)  %>
-  <% end %>
+  <%= link_to 'Nouveau contact', new_contact_path, class: 'btn-green' %>
+
   <br>
   <br>
 
@@ -14,19 +9,33 @@
     <%= select_tag "limit", options_for_select([ 10, 30, 50 ],  params[:limit])%>
     <%= submit_tag "Modifier" %>
   <% end %>
-
+  <br>
+  <br>
+  <br>
   <% @contacts.order(:first_name).each do |contact| %>
     <div>
-      <h1><%= @contacts.order(:first_name).index(contact) + 1 %></h1>
+      <!-- <h1><%#= @contacts.order(:first_name).index(contact) + 1 %></h1> -->
       <p> <%= contact.first_name %> <%= contact.last_name %></p>
-      <p> <%= contact.adress %></p>
-      <p> <%= contact.phone %></p>
-      <p> <%= contact.email %></p>
+      <% contact.taggings.each do |tagging|%>
+        <%= tagging.tag.name %>
+      <% end  %>
+      <%= simple_form_for [contact, Tagging.new] do |f| %>
+        <%= f.input :tag %>
+        <%= f.submit 'Ajouter' %>
+      <% end  %>
+      <%= link_to 'Voir', contact_path(contact) %>
+      <%= link_to 'Modifier', edit_contact_path(contact) %>
+      <%= link_to 'Supprimer', contact_path(contact), method: :delete %>
     </div>
-    <%= link_to 'voir', contact_path(contact) %>
-    <%= link_to 'Modifier', edit_contact_path(contact) %>
-    <%= link_to 'Supprimer', contact_path(contact), method: :delete %>
     <br>
     <br>
   <% end  %>
+  <br>
+  <div>
+    <% for i in 1 .. @number_of_pages %>
+      <%= link_to "#{i}", contacts_path(page: i)  %>
+    <% end %>
+  </div>
+  <br>
+  <br>
 </div>
