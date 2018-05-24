@@ -3,4 +3,5 @@ class Contact < ApplicationRecord
   has_many :tags, through: :taggings
   validates :first_name, presence: true
   validates :last_name, presence: true
+  attr_accessor :page, :limit
 end

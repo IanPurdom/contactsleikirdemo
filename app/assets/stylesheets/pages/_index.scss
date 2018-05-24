@@ -1,2 +1,76 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.header {
+  display:flex;
+  justify-content: space-between;
+}
+
+.tag-form {
+  display: flex;
+}
+
+.tag {
+  background-color: gainsboro;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 7px;
+  font-size: 11px;
+}
+
+.contact-card {
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 25px;
+  margin:15px;
+  height: 157px;
+}
+
+// .form-control {
+//   position: absolute;
+//   bottom: 8px;
+// }
+
+.simple_form {
+  position: absolute;
+  bottom: -9px;
+}
+
+.input-tag{
+  display: flex;
+}
+
+.fa-trash-alt {
+ // color: #C6001C
+}
+
+.fa-edit {
+ // color: #3F4D91
+}
+
+.fa-plus-circle {
+  font-size: 26px;
+}
+
+.fontawsome {
+  position: absolute;
+  bottom: 1px;
+  right: 10px;
+}
+
+.fa-arrow-left{
+  font-size:26px;
+}
+
+.contact-show {
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 25px;
+  margin: 15px;
+  height: 287px;
+  width: 516px;
+}

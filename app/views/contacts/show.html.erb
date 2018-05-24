@@ -1,10 +1,17 @@
 <div class="container">
-  <%= link_to 'Retour', contacts_path %>
+<%= @page %>
+<%= @limit %>
   <br>
+  <%= link_to '', contacts_path(page: @page, limit: @limit) , class:"fas fa-arrow-left" %>
   <br>
-  <p><%= @contact.first_name %> <%= @contact.last_name %></p>
-  <p> <%= @contact.adress %></p>
-  <p> <%= @contact.phone %></p>
-  <p> <%= @contact.email %></p>
-  <%= link_to 'Modifier', edit_contact_path(@contact) %>
+  <div class= "col-md-offset-3 col-md-3 contact-show">
+    <p> <strong>name:</strong> <%= @contact.first_name %> <%= @contact.last_name %></p>
+    <p> <strong>address:</strong><%= @contact.adress %></p>
+    <p> <strong>phone:</strong><%= @contact.phone %></p>
+    <p> <strong>email:</strong><%= @contact.email %></p>
+    <div class="fontawsome">
+      <%= link_to '', edit_contact_path(@contact), class: "fa fa-edit" %>
+      <%= link_to '', contact_path(@contact), method: :delete, class: "fas fa-trash-alt" %>
+    </div>
+  </div>
 </div>

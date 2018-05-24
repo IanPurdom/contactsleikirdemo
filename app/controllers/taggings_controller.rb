@@ -11,7 +11,7 @@ class TaggingsController < ApplicationController
       Tagging.create!(tag_id: Tag.find_by(name: @tag).id, contact_id: params[:contact_id])
     end
 
-    redirect_to contacts_path
+    redirect_to contacts_path(page: tagging_params[:page], limit: tagging_params[:limit])
 
   end
 
@@ -21,7 +21,7 @@ class TaggingsController < ApplicationController
   private
 
   def tagging_params
-    params.require(:tagging).permit(:tag)
+    params.require(:tagging).permit(:tag, :page, :limit)
   end
 
 end
