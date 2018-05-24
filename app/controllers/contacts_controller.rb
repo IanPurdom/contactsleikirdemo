@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
     end
 
     limit = @limit
-    @number_of_pages = (max / limit) + 1
+    @number_of_pages = (max / limit.to_f).ceil
 
     if page_params[:page].nil?
       @page = 1
