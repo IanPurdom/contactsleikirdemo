@@ -1,0 +1,24 @@
+<h1>Contacts#edit</h1>
+
+<div>
+  <%= link_to 'Annuler', contacts_path, class:"btn-red" %>
+</div>
+<br>
+<br>
+<div>
+<div class="container">
+   <div class="grid">
+    <div class="f-new">
+      <ul class="new-form">
+        <%= simple_form_for @contact do |f| %>
+          <%= f.input :first_name, :label => "Prénon" %>
+          <%= f.input :last_name, :label => "Nom" %>
+          <%= f.input :adress, :label => "Adresse" %>
+          <%= f.input :email, :label => "email" %>
+          <%= f.input :phone, :label => "Téléphone" %>
+          <%= f.submit 'Modifier' %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

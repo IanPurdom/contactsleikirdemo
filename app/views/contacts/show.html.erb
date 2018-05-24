@@ -1,0 +1,10 @@
+<div class="container">
+  <%= link_to 'Retour', contacts_path %>
+  <br>
+  <br>
+  <p><%= @contact.first_name %> <%= @contact.last_name %></p>
+  <p> <%= @contact.adress %></p>
+  <p> <%= @contact.phone %></p>
+  <p> <%= @contact.email %></p>
+  <%= link_to 'Modifier', edit_contact_path(@contact) %>
+</div>
