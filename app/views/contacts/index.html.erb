@@ -9,7 +9,7 @@
   </div>
   <br>
   <br>
-    <div>
+  <div>
     <% for i in 1 .. @number_of_pages %>
       <% if i.to_i == @page.to_i %>
         <%= i %>
@@ -31,7 +31,7 @@
       </div>
       <%= simple_form_for [contact, Tagging.new] do |f| %>
         <div class="input-tag">
-          <%= f.input :tag, :label => "", :input_html => {:style => 'height: 25px; width: 100px; font-size: 10px'}%>
+          <%= f.input :tag, :label => "", :input_html => {class: "tagging-input" ,:style => 'height: 25px; width: 100px; font-size: 10px'}%>
           <%= f.hidden_field :page, value: @page %>
           <%= f.hidden_field :limit, value: @limit %>
           <%= f.submit '', class: "submit hidden" %>
