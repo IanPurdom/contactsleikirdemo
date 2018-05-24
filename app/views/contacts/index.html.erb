@@ -1,0 +1,60 @@
+<div class="container">
+  <h1>Contacts</h1>
+  <div class="header">
+    <%= link_to 'Ajouter contact', new_contact_path(page: @page, limit: @limit), class: "fas fa-plus-circle" %>
+      <%= form_tag "contacts/set_limit" do %>
+      <%= select_tag "limit", options_for_select([ 10, 30, 50 ],  params[:limit])%>
+      <%= submit_tag "Modifier" %>
+    <% end %>
+  </div>
+  <br>
+  <br>
+    <div>
+    <% for i in 1 .. @number_of_pages %>
+      <% if i.to_i == @page.to_i %>
+        <%= i %>
+      <% else  %>
+        <%= link_to "#{i}", contacts_path(page: i, limit: @limit)  %>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+  <div class="row">
+  <% @contacts.order(:first_name).each do |contact| %>
+    <div class= "col-md-offset-3 col-md-3 contact-card">
+      <!-- <h1><%#= @contacts.order(:first_name).index(contact) + 1 %></h1> -->
+      <p> <%= contact.first_name %> <%= contact.last_name %></p>
+      <div class="tag-form">
+        <% contact.taggings.each do |tagging|%>
+          <p class="tag"><%= tagging.tag.name %></p>
+        <% end  %>
+      </div>
+      <%= simple_form_for [contact, Tagging.new] do |f| %>
+        <div class="input-tag">
+          <%= f.input :tag, :label => "", :input_html => {:style => 'height: 25px; width: 100px; font-size: 10px'}%>
+          <%= f.hidden_field :page, value: @page %>
+          <%= f.hidden_field :limit, value: @limit %>
+          <%= f.submit '', class: "submit hidden" %>
+        </div>
+      <% end  %>
+      <div class="fontawsome">
+        <%= link_to '', contact_path(contact, page: @page, limit: @limit), class: "fas fa-eye" %>
+        <%= link_to '', edit_contact_path(contact, page: @page, limit: @limit), class: "fa fa-edit" %>
+        <%= link_to '', contact_path(contact, page: @page, limit: @limit), method: :delete, class: "fas fa-trash-alt" %>
+      </div>
+    </div>
+  <% end  %>
+  </div>
+  <br>
+  <div>
+    <% for i in 1 .. @number_of_pages %>
+      <% if i.to_i == @page.to_i %>
+        <%= i %>
+      <% else  %>
+        <%= link_to "#{i}", contacts_path(page: i, limit: @limit)  %>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+  <br>
+</div>

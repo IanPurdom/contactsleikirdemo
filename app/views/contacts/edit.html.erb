@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Modifier</h1>
+  <%= @page %>
+<%= @limit %>
+  <div>
+    <%= link_to '', contacts_path(page: @page, limit: @limit), class:"fas fa-arrow-left" %>
+  </div>
+  <div class="grid">
+    <div class="f-new">
+      <ul class="new-form">
+        <%= simple_form_for @contact do |f| %>
+          <%= f.input :first_name, :label => "Prénon" %>
+          <%= f.input :last_name, :label => "Nom" %>
+          <%= f.input :adress, :label => "Adresse" %>
+          <%= f.input :email, :label => "email" %>
+          <%= f.input :phone, :label => "Téléphone" %>
+          <%= f.hidden_field :page, value: @page %>
+          <%= f.hidden_field :limit, value: @limit %>
+          <%= f.submit 'Modifier' %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<div>
